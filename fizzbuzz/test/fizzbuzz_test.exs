@@ -13,4 +13,10 @@ defmodule FizzbuzzTest do
     assert Fizzbuzz.fizzbuzz(6) == "fizz"
     assert Fizzbuzz.fizzbuzz(9) == "fizz"
   end
+
+  test "return buzz when the number is divisible by 5" do
+    assert Fizzbuzz.fizzbuzz(5) == "buzz"
+    assert Fizzbuzz.fizzbuzz(10) == "buzz"
+    assert Fizzbuzz.fizzbuzz(20) == "buzz"
+  end
 end
