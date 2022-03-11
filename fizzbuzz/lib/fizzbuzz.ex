@@ -3,16 +3,5 @@ defmodule Fizzbuzz do
   Documentation for `Fizzbuzz`.
   """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Fizzbuzz.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
+  def fizzbuzz(n), do: n
 end
