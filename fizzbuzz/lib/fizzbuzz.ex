@@ -17,7 +17,11 @@ defmodule Fizzbuzz do
 
   def fizzbuzz(n), do: Integer.to_string(n)
 
-  def list_fizzbuzz(n) do
+  def list_fizzbuzz(n) when is_integer(n) and n > 0 do
     1..n |> Enum.map(&fizzbuzz/1)
+  end
+
+  def list_fizzbuzz(_) do
+    raise "invalid parameter"
   end
 end
