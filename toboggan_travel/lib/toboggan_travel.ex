@@ -3,7 +3,17 @@ defmodule TobogganTravel do
   Documentation for `TobogganTravel`.
   """
 
-  def part1(input), do: count_trees(input, {3, 1})
+  @slop {3, 1}
+  @slops [{1, 1}, {3, 1}, {5, 1}, {7, 1}, {1, 2}]
+
+  def part1(input), do: count_trees(input, @slop)
+
+  def part2(input) do
+    @slops
+    |> Enum.reduce(1, fn slop, acc ->
+      acc * count_trees(input, slop)
+    end)
+  end
 
   def count_trees(input, {dx, dy}) do
     map = build_map(input)
