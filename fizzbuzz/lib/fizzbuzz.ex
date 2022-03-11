@@ -3,6 +3,10 @@ defmodule Fizzbuzz do
   Documentation for `Fizzbuzz`.
   """
 
+  def fizzbuzz(n) when rem(n, 15) == 0 do
+    "fizz buzz"
+  end
+
   def fizzbuzz(n) when rem(n, 3) == 0 do
     "fizz"
   end
