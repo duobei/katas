@@ -7,5 +7,9 @@ defmodule Fizzbuzz do
     "fizz"
   end
 
+  def fizzbuzz(n) when rem(n, 5) == 0 do
+    "buzz"
+  end
+
   def fizzbuzz(n), do: n
 end
