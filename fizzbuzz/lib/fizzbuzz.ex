@@ -16,4 +16,8 @@ defmodule Fizzbuzz do
   end
 
   def fizzbuzz(n), do: n
+
+  def list_fizzbuzz(n) do
+    1..n |> Enum.map(&fizzbuzz/1)
+  end
 end
