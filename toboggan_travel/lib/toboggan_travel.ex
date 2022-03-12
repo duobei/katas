@@ -53,14 +53,14 @@ defmodule TobogganTravel do
   defp count_trees_recursion({_width, height, _lines}, _slope, {_x, y}, total) when y >= height,
     do: total
 
-  defp count_trees_recursion({width, height, lines}, {dx, dy}, {x, y}, total) do
+  defp count_trees_recursion(map, {dx, dy}, {x, y}, total) do
     total =
-      case see({width, height, lines}, {x, y}) do
+      case see(map, {x, y}) do
         :tree -> total + 1
         :square -> total
       end
 
-    count_trees_recursion({width, height, lines}, {dx, dy}, {x + dx, y + dy}, total)
+    count_trees_recursion(map, {dx, dy}, {x + dx, y + dy}, total)
   end
 
   defp build_map(input) do
