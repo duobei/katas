@@ -15,6 +15,21 @@ defmodule TobogganTravel do
     end)
   end
 
+  def part1_recursion(input) do
+    input
+    |> build_map()
+    |> count_trees_recursion(@slop, {0, 0}, 0)
+  end
+
+  def part2_recursion(input) do
+    map = build_map(input)
+
+    @slops
+    |> Enum.reduce(1, fn slop, acc ->
+      acc * count_trees_recursion(map, slop, {0, 0}, 0)
+    end)
+  end
+
   def count_trees(input, {dx, dy}) do
     map = build_map(input)
 
@@ -33,6 +48,19 @@ defmodule TobogganTravel do
           {:halt, total}
       end
     end)
+  end
+
+  defp count_trees_recursion({_width, height, _lines}, _slope, {_x, y}, total) when y >= height,
+    do: total
+
+  defp count_trees_recursion({width, height, lines}, {dx, dy}, {x, y}, total) do
+    total =
+      case see({width, height, lines}, {x, y}) do
+        :tree -> total + 1
+        :square -> total
+      end
+
+    count_trees_recursion({width, height, lines}, {dx, dy}, {x + dx, y + dy}, total)
   end
 
   defp build_map(input) do
